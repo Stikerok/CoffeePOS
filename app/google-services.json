@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "538087232718",
+    "project_id": "coffeepos-aec4c",
+    "storage_bucket": "coffeepos-aec4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538087232718:android:9efcd05577d47bc3326c9f",
+        "android_client_info": {
+          "package_name": "com.hfad.coffeepos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538087232718-gkk4f8u53dqmi5m5jksgpe6l99s4s50l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hfad.coffeepos",
+            "certificate_hash": "b12405f0292cb0efee7dd683c682a9e62d402663"
+          }
+        },
+        {
+          "client_id": "538087232718-nmbolv3hdu2a682rbis2vuhfi5j2klsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2lHleuwlPfdbVUMhqAWjEn7WT5UlQsFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538087232718-nmbolv3hdu2a682rbis2vuhfi5j2klsc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
