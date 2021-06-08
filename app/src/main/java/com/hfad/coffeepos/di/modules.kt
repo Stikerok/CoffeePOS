@@ -17,7 +17,7 @@ val appModule = module {
         IngredientDatabase(androidContext())
     }
     single {
-        DishesUseCaseImp(get())
+        DishesUseCaseImp(get(), get())
     }
     single {
         IngredientsUseCaseImp(get())

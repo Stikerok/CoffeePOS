@@ -34,6 +34,21 @@ class MainViewModel(
         updateIngredient()
     }
 
+    fun confirmOrder(dish: Dish) {
+        launch {
+            dishesUseCaseImp.confirmOrder(dish).collect { state ->
+                when (state) {
+                    is State.Success -> {
+                        updateIngredient()
+                    }
+                    is State.Failed -> {
+                        error.value = state.message
+                    }
+                }
+            }
+        }
+    }
+
     fun deleteDish(name: String) {
         launch {
             dishesUseCaseImp.deleteDish(name).collect { state ->

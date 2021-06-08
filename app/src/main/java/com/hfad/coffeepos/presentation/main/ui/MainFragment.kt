@@ -49,20 +49,20 @@ class MainFragment : Fragment() {
 
         val milk = Ingredient(
             "milk",
-            5.15F,
-            2F,
+            5.15,
+            100.0,
             "ml",
         )
         val coffee = Ingredient(
             "coffee",
-            26.57F,
-            1F,
+            26.57,
+            50.0,
             "kg",
         )
         val hMap = hashMapOf(milk.name to milk.quantity, coffee.name to coffee.quantity)
         val latte = Dish(
             "jok",
-            5.156F,
+            5.156,
             hMap
         )
 
@@ -78,14 +78,14 @@ class MainFragment : Fragment() {
         viewModel.getIngredients().observe(viewLifecycleOwner, Observer { list ->
             if (list.isNotEmpty()) {
                 val str = list.joinToString("\n") {
-                    "${it.name} ~ ${it.cost}"
+                    "${it.name} ~ ${it.quantity}"
                 }
                 binding.textTwo.text = str
             }
         })
 
         binding.buttonGo.setOnClickListener {
-            viewModel.deleteDish(latte.name.toString())
+            viewModel.confirmOrder(latte)
         }
 
         viewModel.getError().observe(viewLifecycleOwner, Observer {
