@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CoffeePOS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sing_in_button">sing in</string>
+    <string name="sing_out_button">sing out</string>
+    <string name="register_button">Регистрация</string>
+    <string name="out_main_menu">Выйти</string>
+    <string name="error_name_ingredient">Ингредиент с таким именем уже существует, выберите другое имя</string>
+    <string name="error_name_dishes">Блюдо с таким именем уже существует, выберите другое имя</string>
 </resources>
