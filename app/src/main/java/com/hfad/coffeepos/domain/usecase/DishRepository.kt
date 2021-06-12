@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface DishRepository {
 
-    fun addDish(dish: Dish) : Flow<State<String>>
-    fun deleteDish(name: String) : Flow<State<String>>
+    suspend fun addDish(dish: Dish) : State<String>
+    suspend fun deleteDish(name: String) : State<String>
     fun observeDishes() : Flow<State<List<Dish>>>
 }

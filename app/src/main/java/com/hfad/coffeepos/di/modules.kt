@@ -23,7 +23,7 @@ val appModule = module {
         IngredientsUseCaseImp(get())
     }
     factoryBy<DishRepository, DishDatabase>()
-    factoryBy<DishUseCase, DishesUseCaseImp>()
+    factoryBy<DishesUseCase, DishesUseCaseImp>()
     factoryBy<IngredientRepository, IngredientDatabase>()
     factoryBy<IngredientUseCase, IngredientsUseCaseImp>()
 }
