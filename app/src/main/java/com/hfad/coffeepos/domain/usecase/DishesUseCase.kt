@@ -5,10 +5,10 @@ import com.hfad.coffeepos.State
 import com.hfad.coffeepos.domain.entity.Dish
 import kotlinx.coroutines.flow.Flow
 
-interface DishUseCase {
+interface DishesUseCase {
 
-    fun addDish(dish: Dish) : Flow<State<String>>
-    fun deleteDish(name: String) : Flow<State<String>>
+    suspend fun addDish(dish: Dish) : State<String>
+    suspend fun deleteDish(name: String) : State<String>
     fun observeDishes() : Flow<State<List<Dish>>>
-    fun confirmOrder(dish: Dish) : Flow<State<String>>
+    suspend fun confirmOrder(dish: Dish) : State<String>
 }

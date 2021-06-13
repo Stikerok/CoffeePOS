@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.hfad.coffeepos.State
 import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.domain.entity.Ingredient
-import com.hfad.coffeepos.domain.usecase.DishUseCase
+import com.hfad.coffeepos.domain.usecase.DishesUseCase
 import com.hfad.coffeepos.domain.usecase.IngredientUseCase
 import com.hfad.coffeepos.extensions.launch
 import kotlinx.coroutines.flow.collect
 
 class MainViewModel(
-    private val dishesUseCaseImp: DishUseCase,
+    private val dishesUseCaseImp: DishesUseCase,
     private val ingredientsUseCaseImp: IngredientUseCase
 ) : ViewModel() {
 
@@ -36,77 +36,39 @@ class MainViewModel(
 
     fun confirmOrder(dish: Dish) {
         launch {
-            dishesUseCaseImp.confirmOrder(dish).collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        updateIngredient()
-                    }
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
-                }
-            }
+            handleResult(dishesUseCaseImp.confirmOrder(dish)) { }
         }
     }
 
     fun deleteDish(name: String) {
         launch {
-            dishesUseCaseImp.deleteDish(name).collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        updateDishes()
-                    }
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
-                }
+            handleResult(dishesUseCaseImp.deleteDish(name)) { }
+        }
+    }
 
-            }
+    fun deleteIngredient(name: String) {
+        launch {
+            handleResult(ingredientsUseCaseImp.deleteIngredient(name)) { }
         }
     }
 
     fun addIngredient(ingredient: Ingredient) {
         launch {
-            ingredientsUseCaseImp.addIngredient(ingredient).collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        updateIngredient()
-                    }
-
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
-                }
-            }
+            handleResult(ingredientsUseCaseImp.addIngredient(ingredient)) { }
         }
     }
 
     fun addDish(dish: Dish) {
         launch {
-            dishesUseCaseImp.addDish(dish).collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        updateDishes()
-                    }
-
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
-                }
-            }
+            handleResult(dishesUseCaseImp.addDish(dish)) { }
         }
     }
 
     private fun updateIngredient() {
         launch {
             ingredientsUseCaseImp.observeIngredients().collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        ingredients.value = state.data!!
-                    }
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
+                handleResult(state) {
+                    ingredients.value = it
                 }
             }
         }
@@ -115,17 +77,26 @@ class MainViewModel(
     private fun updateDishes() {
         launch {
             dishesUseCaseImp.observeDishes().collect { state ->
-                when (state) {
-                    is State.Success -> {
-                        dishes.value = state.data!!
-                    }
-                    is State.Failed -> {
-                        error.value = state.message
-                    }
+                handleResult(state) {
+                    dishes.value = it
                 }
             }
         }
 
+    }
+
+    private fun <T> handleResult(
+        stateResult: State<T>,
+        action: (T) -> Unit
+    ) {
+        when (stateResult) {
+            is State.Failed -> {
+                error.value = stateResult.message
+            }
+            is State.Success -> {
+                action(stateResult.data)
+            }
+        }
     }
 
 }
