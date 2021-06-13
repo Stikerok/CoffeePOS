@@ -4,7 +4,9 @@ import android.content.Context
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hfad.coffeepos.Constants.COLLECTION_NAME
 import com.hfad.coffeepos.Constants.DISHES_DB
+import com.hfad.coffeepos.Constants.DOCUMENT_FIELD_NAME
 import com.hfad.coffeepos.Constants.TRANSACTION_SUCCESS
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.State
@@ -23,13 +25,13 @@ class DishDatabase(
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val dishesCollection =
-        db.collection("users").document(auth.currentUser?.uid.toString())
+        db.collection(COLLECTION_NAME).document(auth.currentUser?.uid.toString())
             .collection(DISHES_DB)
 
     override suspend fun addDish(dish: Dish): State<String> {
         return try {
             val dishSh =
-                dishesCollection.whereEqualTo("name", "${dish.name}").get().await()
+                dishesCollection.whereEqualTo(DOCUMENT_FIELD_NAME, "${dish.name}").get().await()
             val dishes = dishSh.toObjects(Ingredient::class.java)
             if (dishes.isEmpty()) {
                 dishesCollection.document(dish.name.toString()).set(dish).await()

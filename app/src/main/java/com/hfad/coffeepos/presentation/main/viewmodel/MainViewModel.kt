@@ -36,38 +36,38 @@ class MainViewModel(
 
     fun confirmOrder(dish: Dish) {
         launch {
-            stateResult(dishesUseCaseImp.confirmOrder(dish)) { }
+            handleResult(dishesUseCaseImp.confirmOrder(dish)) { }
         }
     }
 
     fun deleteDish(name: String) {
         launch {
-            stateResult(dishesUseCaseImp.deleteDish(name)) { }
+            handleResult(dishesUseCaseImp.deleteDish(name)) { }
         }
     }
 
     fun deleteIngredient(name: String) {
         launch {
-            stateResult(ingredientsUseCaseImp.deleteIngredient(name)) { }
+            handleResult(ingredientsUseCaseImp.deleteIngredient(name)) { }
         }
     }
 
     fun addIngredient(ingredient: Ingredient) {
         launch {
-            stateResult(ingredientsUseCaseImp.addIngredient(ingredient)) { }
+            handleResult(ingredientsUseCaseImp.addIngredient(ingredient)) { }
         }
     }
 
     fun addDish(dish: Dish) {
         launch {
-            stateResult(dishesUseCaseImp.addDish(dish)) { }
+            handleResult(dishesUseCaseImp.addDish(dish)) { }
         }
     }
 
     private fun updateIngredient() {
         launch {
             ingredientsUseCaseImp.observeIngredients().collect { state ->
-                stateResult(state) {
+                handleResult(state) {
                     ingredients.value = it
                 }
             }
@@ -77,7 +77,7 @@ class MainViewModel(
     private fun updateDishes() {
         launch {
             dishesUseCaseImp.observeDishes().collect { state ->
-                stateResult(state) {
+                handleResult(state) {
                     dishes.value = it
                 }
             }
@@ -85,7 +85,7 @@ class MainViewModel(
 
     }
 
-    private fun <T> stateResult(
+    private fun <T> handleResult(
         stateResult: State<T>,
         action: (T) -> Unit
     ) {

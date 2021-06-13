@@ -5,6 +5,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hfad.coffeepos.Constants.COLLECTION_NAME
+import com.hfad.coffeepos.Constants.DOCUMENT_FIELD_NAME
+import com.hfad.coffeepos.Constants.DOCUMENT_FIELD_QUANTITY
 import com.hfad.coffeepos.Constants.INGREDIENTS_DB
 import com.hfad.coffeepos.Constants.TRANSACTION_SUCCESS
 import com.hfad.coffeepos.R
@@ -25,14 +28,14 @@ class IngredientDatabase(
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val ingredientCollection =
-        db.collection("users").document(auth.currentUser?.uid.toString())
+        db.collection(COLLECTION_NAME).document(auth.currentUser?.uid.toString())
             .collection(INGREDIENTS_DB)
 
     override suspend fun addIngredient(ingredient: Ingredient): State<String> {
         //Проверка наличия ингредиентов с таким же именем как добавляемый
         return try {
             val ingredientSh =
-                ingredientCollection.whereEqualTo("name", "${ingredient.name}").get().await()
+                ingredientCollection.whereEqualTo(DOCUMENT_FIELD_NAME, "${ingredient.name}").get().await()
             val ingredients = ingredientSh.toObjects(Ingredient::class.java)
             if (ingredients.isEmpty()) {
                 ingredientCollection.document(ingredient.name.toString()).set(ingredient).await()
@@ -74,7 +77,7 @@ class IngredientDatabase(
             map?.forEach() {
                 val ingredientRef = ingredientCollection.document(it.key!!)
                 val updateValue = it.value!!
-                ingredientRef.update("quantity", FieldValue.increment(-updateValue)).await()
+                ingredientRef.update(DOCUMENT_FIELD_QUANTITY, FieldValue.increment(-updateValue)).await()
             }
             State.success(TRANSACTION_SUCCESS)
         } catch (e: Exception) {
