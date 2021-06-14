@@ -28,8 +28,8 @@ class MainFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        if (currentUser == null) {
-            findNavController().navigate(R.id.loginFragment)
+        if (currentUser != null) {
+            findNavController().navigate(R.id.orderForm)
         }
     }
 
