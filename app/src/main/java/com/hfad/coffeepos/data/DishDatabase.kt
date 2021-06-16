@@ -25,7 +25,7 @@ class DishDatabase(
     private val db = Firebase.firestore
     val batch = db.batch()
     private val dishesCollection =
-        db.collection("users").document(auth.currentUser?.uid.toString())
+        db.collection("users").document("stszMOESuSgh1Me583Mt0OVkSDY2")
             .collection(DISHES_DB)
 
     override fun addDish(dish: Dish): Flow<State<String>> = flow<State<String>> {

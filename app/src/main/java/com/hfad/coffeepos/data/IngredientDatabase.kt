@@ -24,7 +24,7 @@ class IngredientDatabase(
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val ingredientCollection =
-        db.collection("users").document(auth.currentUser?.uid.toString())
+        db.collection("users").document("stszMOESuSgh1Me583Mt0OVkSDY2")
             .collection(INGREDIENTS_DB)
 
     override fun addIngredient(ingredient: Ingredient) = flow<State<String>> {
