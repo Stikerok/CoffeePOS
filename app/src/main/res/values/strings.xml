@@ -8,4 +8,12 @@
     <string name="out_main_menu">Выйти</string>
     <string name="error_name_ingredient">Ингредиент с таким именем уже существует, выберите другое имя</string>
     <string name="error_name_dishes">Блюдо с таким именем уже существует, выберите другое имя</string>
+
+    <!-- main menu strings-->
+    <string name="orders">ORDERS</string>
+    <string name="dish">DELISHES</string>
+    <string name="ingrid">INGRIDIENTS</string>
+
+    <!-- order form strings-->
+    <string name="apply">APPLY</string>
 </resources>

@@ -25,7 +25,9 @@ class DishDatabase(
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val dishesCollection =
-        db.collection(COLLECTION_NAME).document(auth.currentUser?.uid.toString())
+
+        db.collection("users").document("stszMOESuSgh1Me583Mt0OVkSDY2")
+
             .collection(DISHES_DB)
 
     override suspend fun addDish(dish: Dish): State<String> {

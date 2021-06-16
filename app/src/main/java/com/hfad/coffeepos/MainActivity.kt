@@ -14,28 +14,8 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var navController: NavController
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        auth = Firebase.auth
-        val host : NavHostFragment = supportFragmentManager.
-                findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
-        navController = host.navController
-        val toolBar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolBar)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        auth.signOut()
-        return item.onNavDestinationSelected(navController)
-                || super.onOptionsItemSelected(item)
-    }
-
 }

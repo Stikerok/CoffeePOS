@@ -19,5 +19,16 @@
         android:id="@+id/loginFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.hfad.coffeepos.presentation.main.ui.MainMenu"
+        android:label="main_menu"
+        tools:layout="@layout/main_menu"/>
+
+    <fragment
+        android:id="@+id/orderForm"
+        android:name="com.hfad.coffeepos.presentation.main.ui.OrderForm"
+        android:label="order_form"
+        tools:layout="@layout/order_form"/>
 </navigation>
