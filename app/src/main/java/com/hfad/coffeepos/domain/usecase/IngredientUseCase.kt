@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface IngredientUseCase {
 
-    fun addIngredient(ingredient: Ingredient) : Flow<State<String>>
-    fun deleteIngredient(name: String) : Flow<State<String>>
+    suspend fun addIngredient(ingredient: Ingredient) : State<String>
+    suspend fun deleteIngredient(name: String) : State<String>
     fun observeIngredients() : Flow<State<List<Ingredient>>>
 }

@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 class DishesUseCaseImp(
     private val dishDatabase: DishRepository,
     private val ingredientDatabase: IngredientRepository
-) : DishUseCase {
+) : DishesUseCase {
 
-    override fun addDish(dish: Dish): Flow<State<String>> {
+    override suspend fun addDish(dish: Dish): State<String> {
         return dishDatabase.addDish(dish)
     }
 
-    override fun deleteDish(name: String): Flow<State<String>> {
+    override suspend fun deleteDish(name: String): State<String> {
         return dishDatabase.deleteDish(name)
     }
 
@@ -21,7 +21,7 @@ class DishesUseCaseImp(
         return dishDatabase.observeDishes()
     }
 
-    override fun confirmOrder(dish: Dish): Flow<State<String>> {
+    override suspend fun confirmOrder(dish: Dish): State<String> {
         return ingredientDatabase.updateQuantityIngredients(dish.ingredients)
     }
 }

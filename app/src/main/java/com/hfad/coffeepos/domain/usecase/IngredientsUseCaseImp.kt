@@ -7,11 +7,11 @@ import kotlinx.coroutines.flow.Flow
 class IngredientsUseCaseImp(
     private val ingredientDatabase: IngredientRepository
 ) : IngredientUseCase {
-    override fun addIngredient(ingredient: Ingredient): Flow<State<String>> {
+    override suspend fun addIngredient(ingredient: Ingredient): State<String> {
         return ingredientDatabase.addIngredient(ingredient)
     }
 
-    override fun deleteIngredient(name: String): Flow<State<String>> {
+    override suspend fun deleteIngredient(name: String): State<String> {
         return ingredientDatabase.deleteIngredient(name)
     }
 
