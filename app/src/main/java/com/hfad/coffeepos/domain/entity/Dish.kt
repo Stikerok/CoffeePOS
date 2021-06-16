@@ -1,7 +1,7 @@
 package com.hfad.coffeepos.domain.entity
 
 data class Dish(
-    val name: String? = null,
-    val cost: Double? = null,
+    var name: String? = null,
+    var cost: Double? = null,
     val ingredients: HashMap<String?, Double?>? = null
 )

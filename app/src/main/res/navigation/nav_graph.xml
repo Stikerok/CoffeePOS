@@ -19,5 +19,72 @@
         android:id="@+id/loginFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.hfad.coffeepos.presentation.main.ui.MainMenu"
+        android:label="main_menu"
+        tools:layout="@layout/main_menu">
+        <action
+            android:id="@+id/action_mainMenu_to_orderForm"
+            app:destination="@id/orderForm" />
+        <action
+            android:id="@+id/action_mainMenu_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
+        <action
+            android:id="@+id/action_mainMenu_to_ingridients"
+            app:destination="@id/ingridients" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/orderForm"
+        android:name="com.hfad.coffeepos.presentation.main.ui.OrderForm"
+        android:label="order_form"
+        tools:layout="@layout/order_form">
+        <action
+            android:id="@+id/action_orderForm_to_mainMenu"
+            app:destination="@id/mainMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/dishDrinks"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinks"
+        android:label="dish_drinks"
+        tools:layout="@layout/dish_drinks" >
+        <action
+            android:id="@+id/action_dishDrinks_to_mainMenu"
+            app:destination="@id/mainMenu" />
+        <action
+            android:id="@+id/action_dishDrinks_to_dishDrinksEditPage"
+            app:destination="@id/dishDrinksEditPage" />
+        <action
+            android:id="@+id/action_dishDrinks_to_dishDrinksAddPage"
+            app:destination="@id/dishDrinksAddPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingridients"
+        android:name="com.hfad.coffeepos.presentation.main.ui.Ingridients"
+        android:label="ingridients"
+        tools:layout="@layout/ingridients" >
+        <action
+            android:id="@+id/action_ingridients_to_mainMenu"
+            app:destination="@id/mainMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/dishDrinksEditPage"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksEditPage"
+        android:label="dish_drinks_edit_page"
+        tools:layout="@layout/dish_drinks_edit_page" >
+        <action
+            android:id="@+id/action_dishDrinksEditPage_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
+    </fragment>
+    <fragment
+        android:id="@+id/dishDrinksAddPage"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksAddPage"
+        android:label="dish_drinks_add_page"
+        tools:layout="@layout/dish_drinks_add_page" >
+        <action
+            android:id="@+id/action_dishDrinksAddPage_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
+    </fragment>
 </navigation>
