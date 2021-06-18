@@ -8,16 +8,16 @@
     tools:context=".presentation.main.ui.OrderForm">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/orderRecycler"
+        android:id="@+id/recycler_order"
         android:layout_width="407dp"
         android:layout_height="659dp"
-        app:layout_constraintBottom_toTopOf="@id/orderButton"
+        app:layout_constraintBottom_toTopOf="@id/button_apply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/orderButton"
+        android:id="@+id/button_apply"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:text="@string/apply"
@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orderRecycler"/>
+        app:layout_constraintTop_toBottomOf="@id/recycler_order"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

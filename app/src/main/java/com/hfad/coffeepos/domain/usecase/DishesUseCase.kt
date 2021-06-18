@@ -10,5 +10,5 @@ interface DishesUseCase {
     suspend fun addDish(dish: Dish) : State<String>
     suspend fun deleteDish(name: String) : State<String>
     fun observeDishes() : Flow<State<List<Dish>>>
-    suspend fun confirmOrder(dish: Dish) : State<String>
+    suspend fun confirmOrder(dishesMap : HashMap<Dish, String>) : State<String>
 }

@@ -1,13 +1,14 @@
 package com.hfad.coffeepos.presentation.main.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.OrderFormBinding
 import com.hfad.coffeepos.presentation.main.adapter.OrderAdapter
 import com.hfad.coffeepos.presentation.main.viewmodel.MainViewModel
@@ -34,17 +35,17 @@ class OrderForm : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.orderRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.orderRecycler.adapter = orderAdapter
+        binding.recyclerOrder.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerOrder.adapter = orderAdapter
         viewModel.getDishes().observe(viewLifecycleOwner, Observer {
             orderAdapter.setData(it)
         })
-        binding.orderButton.setOnClickListener {
-            val dishes = orderAdapter.getOrder()
-            dishes.forEach {
-
-                Log.d("TAG",it.name.toString())
-            }
+        binding.buttonApply.setOnClickListener {
+//            viewModel.confirmOrder(orderAdapter.getOrder())
+            val order = orderAdapter.getOrder()
+            val bundle = Bundle()
+            bundle.putSerializable("str",order)
+            findNavController().navigate(R.id.confirmOrderFragment,bundle)
         }
     }
 }

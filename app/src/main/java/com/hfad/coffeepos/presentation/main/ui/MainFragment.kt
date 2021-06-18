@@ -85,7 +85,7 @@ class MainFragment : Fragment() {
         })
 
         binding.buttonGo.setOnClickListener {
-            viewModel.confirmOrder(latte)
+
         }
 
         viewModel.getError().observe(viewLifecycleOwner, Observer {
