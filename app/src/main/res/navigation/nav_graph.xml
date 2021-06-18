@@ -31,4 +31,9 @@
         android:name="com.hfad.coffeepos.presentation.main.ui.OrderForm"
         android:label="order_form"
         tools:layout="@layout/order_form"/>
+    <fragment
+        android:id="@+id/confirmOrderFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.ConfirmOrderFragment"
+        android:label="confirm_order_fragment"
+        tools:layout="@layout/confirm_order_fragment" />
 </navigation>

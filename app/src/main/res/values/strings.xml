@@ -16,4 +16,5 @@
 
     <!-- order form strings-->
     <string name="apply">APPLY</string>
+    <string name="button_confirm">Confirm</string>
 </resources>

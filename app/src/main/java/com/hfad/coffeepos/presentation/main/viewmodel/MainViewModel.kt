@@ -34,9 +34,9 @@ class MainViewModel(
         updateIngredient()
     }
 
-    fun confirmOrder(dish: Dish) {
+    fun confirmOrder(map: HashMap<Dish, String>) {
         launch {
-            handleResult(dishesUseCaseImp.confirmOrder(dish)) { }
+            handleResult(dishesUseCaseImp.confirmOrder(map)) { }
         }
     }
 
@@ -98,5 +98,4 @@ class MainViewModel(
             }
         }
     }
-
 }
