@@ -3,11 +3,11 @@ package com.hfad.coffeepos.presentation.main.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.domain.entity.Dish
 
@@ -27,6 +27,7 @@ class OrderAdapter internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
         viewHolder.name.text = item.name
+        item.image?.let { viewHolder.image.setImageResource(it) }
         if (order[item] == null) {
             order[item] = 0
             viewHolder.quantity.setText(order[item].toString())
@@ -59,9 +60,10 @@ class OrderAdapter internal constructor(
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.text_name_prod)
-        val plus: Button = view.findViewById(R.id.button_plus_quantity)
+        val plus: FloatingActionButton = view.findViewById(R.id.button_plus_quantity)
         val quantity: EditText = view.findViewById(R.id.text_quantity)
-        val minus: Button = view.findViewById(R.id.button_minus_quantity)
+        val minus: FloatingActionButton = view.findViewById(R.id.button_minus_quantity)
+        val image : ImageView = view.findViewById(R.id.img_prod_item)
     }
 
     override fun getItemCount() = data.size

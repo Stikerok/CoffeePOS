@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.ConfirmOrderFragmentBinding
 import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.presentation.main.adapter.ConfirmOrderAdapter
