@@ -10,7 +10,7 @@ import com.hfad.coffeepos.domain.entity.Dish
 
 class ConfirmOrderAdapter internal constructor(
     private var data: MutableList<Dish>,
-    private var quantityList: MutableList<String>,
+    private var quantityList: MutableList<Int>,
 ) : RecyclerView.Adapter<ConfirmOrderAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -24,11 +24,11 @@ class ConfirmOrderAdapter internal constructor(
         val item = data[position]
         val itemQuantity = quantityList[position]
         viewHolder.name.text = item.name
-        viewHolder.quantity.text = itemQuantity
-        viewHolder.cost.text = (item.cost?.times(itemQuantity.toInt())).toString()
+        viewHolder.quantity.text = itemQuantity.toString()
+        viewHolder.cost.text = (item.cost?.times(itemQuantity)).toString()
     }
 
-    fun setData(data: HashMap<Dish, String>) {
+    fun setData(data: HashMap<Dish, Int>) {
         data.forEach { (key, value) ->
             this.data.add(key)
             quantityList.add(value)

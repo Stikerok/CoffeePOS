@@ -15,7 +15,7 @@ class OrderAdapter internal constructor(
     private var data: List<Dish>
 ) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
-    private val order = mutableMapOf<Dish, String>()
+    private val order = mutableMapOf<Dish, Int>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
@@ -27,17 +27,23 @@ class OrderAdapter internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
         viewHolder.name.text = item.name
+        if (order[item] == null) {
+            order[item] = 0
+            viewHolder.quantity.setText(order[item].toString())
+        } else {
+            viewHolder.quantity.setText(order[item].toString())
+        }
         viewHolder.plus.setOnClickListener {
-            val quantity = viewHolder.quantity.text.toString().toInt() + 1
-            viewHolder.quantity.setText(quantity.toString())
+            order[item] = order[item]!!.plus(1)
+            viewHolder.quantity.setText(order[item].toString())
         }
         viewHolder.minus.setOnClickListener {
-            val quantity = viewHolder.quantity.text.toString().toInt() - 1
-            if (quantity >= 0) viewHolder.quantity.setText(quantity.toString())
-        }
-        viewHolder.quantity.doAfterTextChanged {
-            val quantity = viewHolder.quantity.text.toString()
-            order[item] = quantity
+            val value = order[item]
+            if (value != null) {
+                if (value > 0)
+                    order[item] = order[item]!!.minus(1)
+                viewHolder.quantity.setText(order[item].toString())
+            }
         }
     }
 
@@ -46,8 +52,8 @@ class OrderAdapter internal constructor(
         notifyDataSetChanged()
     }
 
-    fun getOrder(): HashMap<Dish, String> {
-        return order as HashMap<Dish, String>
+    fun getOrder(): HashMap<Dish, Int> {
+        return order as HashMap<Dish, Int>
     }
 
 
