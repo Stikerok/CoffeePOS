@@ -4,35 +4,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.ui.MainMenu">
+    tools:context=".presentation.main.ui.MainMenuFragment">
 
 
     <Button
-        android:id="@+id/button_confirm"
+        android:id="@+id/button_order"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:text="@string/orders"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/dishButton"
+        app:layout_constraintBottom_toTopOf="@id/button_dish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"/>
 
     <Button
-        android:id="@+id/dishButton"
+        android:id="@+id/button_dish"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:text="@string/dish"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/ingridButton"
+        app:layout_constraintBottom_toTopOf="@id/button_ingredient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_confirm" />
+        app:layout_constraintTop_toBottomOf="@id/button_order" />
 
     <Button
-        android:id="@+id/ingridButton"
+        android:id="@+id/button_ingredient"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dishButton" />
+        app:layout_constraintTop_toBottomOf="@id/button_dish" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
