@@ -3,11 +3,11 @@ package com.hfad.coffeepos.presentation.main.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.domain.entity.Dish
 
@@ -15,7 +15,7 @@ class OrderAdapter internal constructor(
     private var data: List<Dish>
 ) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
-    private val order = mutableMapOf<Dish, String>()
+    private val order = mutableMapOf<Dish, Int>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
@@ -27,17 +27,24 @@ class OrderAdapter internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
         viewHolder.name.text = item.name
+        item.image?.let { viewHolder.image.setImageResource(it) }
+        if (order[item] == null) {
+            order[item] = 0
+            viewHolder.quantity.setText(order[item].toString())
+        } else {
+            viewHolder.quantity.setText(order[item].toString())
+        }
         viewHolder.plus.setOnClickListener {
-            val quantity = viewHolder.quantity.text.toString().toInt() + 1
-            viewHolder.quantity.setText(quantity.toString())
+            order[item] = order[item]!!.plus(1)
+            viewHolder.quantity.setText(order[item].toString())
         }
         viewHolder.minus.setOnClickListener {
-            val quantity = viewHolder.quantity.text.toString().toInt() - 1
-            if (quantity >= 0) viewHolder.quantity.setText(quantity.toString())
-        }
-        viewHolder.quantity.doAfterTextChanged {
-            val quantity = viewHolder.quantity.text.toString()
-            order[item] = quantity
+            val value = order[item]
+            if (value != null) {
+                if (value > 0)
+                    order[item] = order[item]!!.minus(1)
+                viewHolder.quantity.setText(order[item].toString())
+            }
         }
     }
 
@@ -46,16 +53,17 @@ class OrderAdapter internal constructor(
         notifyDataSetChanged()
     }
 
-    fun getOrder(): HashMap<Dish, String> {
-        return order as HashMap<Dish, String>
+    fun getOrder(): HashMap<Dish, Int> {
+        return order as HashMap<Dish, Int>
     }
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.text_name_prod)
-        val plus: Button = view.findViewById(R.id.button_plus_quantity)
+        val plus: FloatingActionButton = view.findViewById(R.id.button_plus_quantity)
         val quantity: EditText = view.findViewById(R.id.text_quantity)
-        val minus: Button = view.findViewById(R.id.button_minus_quantity)
+        val minus: FloatingActionButton = view.findViewById(R.id.button_minus_quantity)
+        val image : ImageView = view.findViewById(R.id.img_prod_item)
     }
 
     override fun getItemCount() = data.size

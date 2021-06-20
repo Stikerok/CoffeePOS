@@ -34,7 +34,7 @@ class MainViewModel(
         updateIngredient()
     }
 
-    fun confirmOrder(map: HashMap<Dish, String>) {
+    fun confirmOrder(map: HashMap<Dish, Int>) {
         launch {
             handleResult(dishesUseCaseImp.confirmOrder(map)) { }
         }

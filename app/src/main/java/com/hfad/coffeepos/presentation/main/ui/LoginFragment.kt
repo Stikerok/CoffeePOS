@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.hfad.coffeepos.R
-import com.hfad.coffeepos.databinding.FragmentLoginBinding
+import com.hfad.coffeepos.databinding.LoginFragmentBinding
 
 
 class LoginFragment : Fragment() {
@@ -21,7 +21,7 @@ class LoginFragment : Fragment() {
     }
 
     private lateinit var auth: FirebaseAuth
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: LoginFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = LoginFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    findNavController().navigate(R.id.mainFragment)
+                    findNavController().navigate(R.id.mainMenuFragment)
                 } else {
                     Toast.makeText(requireContext(), "Authentication failed.",
                         Toast.LENGTH_SHORT).show()

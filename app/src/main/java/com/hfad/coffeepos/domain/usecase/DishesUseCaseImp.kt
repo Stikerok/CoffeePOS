@@ -21,18 +21,18 @@ class DishesUseCaseImp(
         return dishDatabase.observeDishes()
     }
 
-    override suspend fun confirmOrder(dishesMap: HashMap<Dish, String>): State<String> {
+    override suspend fun confirmOrder(dishesMap: HashMap<Dish, Int>): State<String> {
         val ingredientResult = mutableMapOf<String?, Double?>()
         dishesMap.forEach { (dishKey, dishValue) ->
             dishKey.ingredients?.forEach { (ingredientKey, ingredientValue) ->
                 if (ingredientResult.containsKey(ingredientKey)) {
-                    ingredientResult[ingredientKey] = ingredientValue?.let { ingredientResult[ingredientKey]?.plus(it * dishValue.toInt()) }
+                    ingredientResult[ingredientKey] =
+                        ingredientValue?.let { ingredientResult[ingredientKey]?.plus(it * dishValue) }
                 } else {
-                    ingredientResult[ingredientKey] = ingredientValue?.times(dishValue.toInt())
+                    ingredientResult[ingredientKey] = ingredientValue?.times(dishValue)
                 }
             }
         }
-
         return ingredientDatabase.updateQuantityIngredients(ingredientResult as HashMap<String?, Double?>)
     }
 }
