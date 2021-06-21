@@ -45,11 +45,11 @@ class MainMenuFragment: Fragment() {
         }
 
         binding.buttonDish.setOnClickListener {
-
+            findNavController().navigate(R.id.dishDrinks)
         }
 
         binding.buttonIngredient.setOnClickListener {
-
+            findNavController().navigate(R.id.ingridients)
         }
 
     }

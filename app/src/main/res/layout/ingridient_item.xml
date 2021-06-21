@@ -7,23 +7,23 @@
 
 
     <ImageView
-        android:id="@+id/img_prod_item"
+        android:id="@+id/img_ingrid_item"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/name_prod_item"
+        app:layout_constraintBottom_toTopOf="@id/name_ingrid_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/name_prod_item"
+        android:id="@+id/name_ingrid_item"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:textSize="20sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_prod_item" />
+        app:layout_constraintTop_toBottomOf="@id/img_ingrid_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

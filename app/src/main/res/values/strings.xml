@@ -14,8 +14,6 @@
     <string name="quantity">Кол-во</string>
     <string name="currency">руб.</string>
 
-
-
     <!-- main menu strings-->
     <string name="orders">ORDERS</string>
     <string name="dish">DELISHES</string>
@@ -24,4 +22,8 @@
     <!-- order form strings-->
     <string name="apply">APPLY</string>
     <string name="button_confirm">Confirm</string>
+
+    <!-- dish_drinks strings-->
+    <string name="add_new">ADD NEW</string>
+
 </resources>
