@@ -31,4 +31,47 @@
         android:name="com.hfad.coffeepos.presentation.main.ui.ConfirmOrderFragment"
         android:label="confirm_order_fragment"
         tools:layout="@layout/confirm_order_fragment" />
+
+    <fragment
+        android:id="@+id/dishDrinks"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinks"
+        android:label="dish_drinks"
+        tools:layout="@layout/dish_drinks" >
+        <action
+            android:id="@+id/action_dishDrinks_to_mainMenu"
+            app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_dishDrinks_to_dishDrinksEditPage"
+            app:destination="@id/dishDrinksEditPage" />
+        <action
+            android:id="@+id/action_dishDrinks_to_dishDrinksAddPage"
+            app:destination="@id/dishDrinksAddPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingridients"
+        android:name="com.hfad.coffeepos.presentation.main.ui.Ingridients"
+        android:label="ingridients"
+        tools:layout="@layout/ingridients" >
+        <action
+            android:id="@+id/action_ingridients_to_mainMenu"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dishDrinksEditPage"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksEditPage"
+        android:label="dish_drinks_edit_page"
+        tools:layout="@layout/dish_drinks_edit_page" >
+        <action
+            android:id="@+id/action_dishDrinksEditPage_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
+    </fragment>
+    <fragment
+        android:id="@+id/dishDrinksAddPage"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksAddPage"
+        android:label="dish_drinks_add_page"
+        tools:layout="@layout/dish_drinks_add_page" >
+        <action
+            android:id="@+id/action_dishDrinksAddPage_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
+    </fragment>
 </navigation>
