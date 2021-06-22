@@ -4,7 +4,11 @@
     <color name="green_dark">#004c40</color>
     <color name="yellow_light">#ffc046</color>
     <color name="yellow_dark">#c68400</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="red">#c62828</color>
+    <color name="red_500">#CF6679</color>
+    <color name="black">#121212</color>
+    <color name="black_800">#000000</color>
+    <color name="white">#fafafa</color>
+    <color name="white_100">#FFFFFF</color>
+    <color name="grey">#102027</color>
 </resources>

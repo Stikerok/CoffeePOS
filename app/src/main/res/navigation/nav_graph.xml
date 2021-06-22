@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/ingridients"
-        android:name="com.hfad.coffeepos.presentation.main.ui.Ingridients"
+        android:name="com.hfad.coffeepos.presentation.main.ui.IngredientsFragment"
         android:label="ingridients"
         tools:layout="@layout/ingridients" >
         <action

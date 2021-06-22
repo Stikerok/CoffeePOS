@@ -10,19 +10,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.IngridientsBinding
-import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.domain.entity.Ingredient
-import com.hfad.coffeepos.presentation.main.adapter.IngridientAdapter
-import com.hfad.coffeepos.presentation.main.adapter.IngridientItemClickListener
+import com.hfad.coffeepos.presentation.main.adapter.IngredientsAdapter
+import com.hfad.coffeepos.presentation.main.adapter.IngredientItemClickListener
 import com.hfad.coffeepos.presentation.main.viewmodel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class Ingridients: Fragment(),IngridientItemClickListener{
+class IngredientsFragment : Fragment(), IngredientItemClickListener {
 
     private val viewModel: MainViewModel by viewModel()
     private var _binding: IngridientsBinding? = null
     private val binding get() = _binding!!
-    private val ingridientAdapter = IngridientAdapter(listOf())
+    private val ingredientsAdapter = IngredientsAdapter(listOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +36,14 @@ class Ingridients: Fragment(),IngridientItemClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ingridRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.ingridRecycler.adapter = ingridientAdapter
+        binding.ingridRecycler.adapter = ingredientsAdapter
         viewModel.getIngredients().observe(viewLifecycleOwner, Observer {
-            ingridientAdapter.setData(it)
-            ingridientAdapter.setIngridientListener(this)
+            ingredientsAdapter.setData(it)
         })
+        ingredientsAdapter.setIngredientsListener(this)
 
     }
+
     override fun onClick(ingrid: Ingredient) {
         findNavController().navigate(R.id.action_ingridients_to_mainMenu)
     }
