@@ -53,8 +53,11 @@
         android:label="ingridients"
         tools:layout="@layout/ingridients" >
         <action
-            android:id="@+id/action_ingridients_to_mainMenu"
-            app:destination="@id/mainMenuFragment" />
+            android:id="@+id/action_ingridients_to_ingredientCardFragment"
+            app:destination="@id/ingredientCardFragment" />
+        <action
+            android:id="@+id/action_ingridients_to_add_Ingredient_Fragment"
+            app:destination="@id/addIngredientFragment" />
     </fragment>
     <fragment
         android:id="@+id/dishDrinksEditPage"
@@ -73,5 +76,28 @@
         <action
             android:id="@+id/action_dishDrinksAddPage_to_dishDrinks"
             app:destination="@id/dishDrinks" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientCardFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.IngredientCardFragment"
+        android:label="fragment_ingredient_card"
+        tools:layout="@layout/fragment_ingredient_card" >
+        <action
+            android:id="@+id/action_ingredientCardFragment_to_choiceImageFragment"
+            app:destination="@id/choiceImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choiceImageFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.ChoiceImageFragment"
+        android:label="fragment_choice_image"
+        tools:layout="@layout/fragment_choice_image"/>
+    <fragment
+        android:id="@+id/addIngredientFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.AddIngredientFragment"
+        android:label="fragment_add__ingredient_"
+        tools:layout="@layout/fragment_add__ingredient_">
+        <action
+            android:id="@+id/action_add_Ingredient_Fragment_to_choiceImageFragment"
+            app:destination="@id/choiceImageFragment" />
     </fragment>
 </navigation>

@@ -7,4 +7,6 @@ object Constants {
     const val DOCUMENT_FIELD_NAME = "name"
     const val COLLECTION_NAME = "users"
     const val DOCUMENT_FIELD_QUANTITY = "quantity"
+    const val BUNDLE_KEY = "101"
+    const val CHOICE_IMAGE_BUNDLE_KEY = "103"
 }

@@ -53,4 +53,8 @@ class MainMenuFragment: Fragment() {
         }
 
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

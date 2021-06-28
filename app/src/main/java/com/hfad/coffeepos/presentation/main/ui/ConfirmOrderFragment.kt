@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hfad.coffeepos.Constants.BUNDLE_KEY
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.ConfirmOrderFragmentBinding
 import com.hfad.coffeepos.domain.entity.Dish
@@ -33,7 +34,7 @@ class ConfirmOrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerConfirmOrder.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerConfirmOrder.adapter = confirmOrderAdapter
-        val order = arguments?.getSerializable("str") as HashMap<Dish, Int>
+        val order = arguments?.getSerializable(BUNDLE_KEY) as HashMap<Dish, Int>
         confirmOrderAdapter.setData(order)
         val totalCost = "${requireContext().getString(R.string.total_cost)} " +
                 "${String.format("%.2f",getTotalCost(order))} " +
@@ -50,6 +51,10 @@ class ConfirmOrderFragment : Fragment() {
             totalCost += dish.cost?.times(value) ?: 0.0
         }
         return totalCost
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

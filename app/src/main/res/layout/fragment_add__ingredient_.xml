@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margin_8dp"
+    android:layout_marginBottom="@dimen/margin_8dp"
+    tools:context=".presentation.main.ui.AddIngredientFragment">
+
+    <ImageView
+        android:id="@+id/img_add_ingredient_card"
+        android:layout_width="@dimen/image_size_card"
+        android:layout_height="@dimen/image_size_card"
+        android:src="@drawable/add_image_24"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="@id/margin_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/add_ingredient_image_barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="img_add_ingredient_card,text_input_add_ingredient_cost,text_input_add_ingredient_name" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_start_end" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_start_end" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_add_ingredient_quantity"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/margin_start"
+        app:layout_constraintTop_toBottomOf="@id/add_ingredient_image_barrier"
+        app:layout_constraintEnd_toEndOf="@id/img_add_ingredient_card">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_add_ingredient_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quantity"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_add_ingredient_units"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        app:layout_constraintStart_toEndOf="@id/text_input_add_ingredient_quantity"
+        app:layout_constraintTop_toBottomOf="@id/add_ingredient_image_barrier"
+        app:layout_constraintEnd_toEndOf="@id/margin_end">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_add_ingredient_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/units"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_add_ingredient_cost"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        app:layout_constraintBottom_toTopOf="@id/add_ingredient_image_barrier"
+        app:layout_constraintEnd_toEndOf="@id/margin_end"
+        app:layout_constraintStart_toEndOf="@id/img_add_ingredient_card"
+        app:layout_constraintTop_toBottomOf="@id/text_input_add_ingredient_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_add_ingredient_cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cost"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_add_ingredient_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        app:layout_constraintBottom_toTopOf="@id/text_input_add_ingredient_cost"
+        app:layout_constraintEnd_toEndOf="@id/margin_end"
+        app:layout_constraintStart_toEndOf="@id/img_add_ingredient_card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_add_ingredient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_ingredient_button_apply"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/margin_end"
+        android:text="@string/apply"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

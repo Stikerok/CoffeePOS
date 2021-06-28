@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">CoffeePOS</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sing_in_button">sing in</string>
-    <string name="sing_out_button">sing out</string>
+
+    <string name="sing_in_button">войти</string>
+    <string name="sing_out_button">Зарегистрировать</string>
     <string name="register_button">Регистрация</string>
     <string name="sign_out_toolbar_menu">Выйти</string>
     <string name="error_name_ingredient">Ингредиент с таким именем уже существует, выберите другое имя</string>
@@ -15,15 +14,20 @@
     <string name="currency">руб.</string>
 
     <!-- main menu strings-->
-    <string name="orders">ORDERS</string>
-    <string name="dish">DELISHES</string>
-    <string name="ingrid">INGRIDIENTS</string>
+    <string name="orders">Заказы</string>
+    <string name="dish">Блюда</string>
+    <string name="ingrid">Игридиенты</string>
 
     <!-- order form strings-->
-    <string name="apply">APPLY</string>
-    <string name="button_confirm">Confirm</string>
+    <string name="apply">Подтвердить</string>
+    <string name="button_confirm">Подтверждение</string>
 
     <!-- dish_drinks strings-->
-    <string name="add_new">ADD NEW</string>
+    <string name="add_new">Добавить новый</string>
+    <string name="name">Наименование</string>
+    <string name="cost">Стоимость</string>
+    <string name="units">Единицы измерения</string>
+    <string name="button_edit">Редактировать</string>
+    <string name="back">Назад</string>
 
 </resources>

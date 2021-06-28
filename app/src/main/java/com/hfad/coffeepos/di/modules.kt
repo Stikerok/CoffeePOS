@@ -3,6 +3,7 @@ package com.hfad.coffeepos.di
 import com.hfad.coffeepos.data.DishDatabase
 import com.hfad.coffeepos.data.IngredientDatabase
 import com.hfad.coffeepos.domain.usecase.*
+import com.hfad.coffeepos.presentation.main.viewmodel.IngredientViewModel
 import com.hfad.coffeepos.presentation.main.viewmodel.MainViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.ext.koin.viewModel

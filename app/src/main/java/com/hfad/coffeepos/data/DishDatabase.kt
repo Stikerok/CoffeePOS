@@ -32,15 +32,8 @@ class DishDatabase(
 
     override suspend fun addDish(dish: Dish): State<String> {
         return try {
-            val dishSh =
-                dishesCollection.whereEqualTo(DOCUMENT_FIELD_NAME, "${dish.name}").get().await()
-            val dishes = dishSh.toObjects(Ingredient::class.java)
-            if (dishes.isEmpty()) {
-                dishesCollection.document(dish.name.toString()).set(dish).await()
-                State.success(TRANSACTION_SUCCESS)
-            } else {
-                State.failed(context.getString(R.string.error_name_ingredient))
-            }
+            dishesCollection.document(dish.name.toString()).set(dish).await()
+            State.success(TRANSACTION_SUCCESS)
         } catch (e: Exception) {
             State.failed(e.message.toString())
         }
