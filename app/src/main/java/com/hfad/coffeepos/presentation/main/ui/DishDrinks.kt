@@ -56,6 +56,9 @@ class DishDrinks : Fragment(), DishDrinksItemClickListener {
         objCopy.putString("q", dish.name)
         findNavController().navigate(R.id.action_dishDrinks_to_dishDrinksEditPage, objCopy)
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

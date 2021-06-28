@@ -34,17 +34,9 @@ class IngredientDatabase(
             .collection(INGREDIENTS_DB)
 
     override suspend fun addIngredient(ingredient: Ingredient): State<String> {
-        //Проверка наличия ингредиентов с таким же именем как добавляемый
         return try {
-            val ingredientSh =
-                ingredientCollection.whereEqualTo(DOCUMENT_FIELD_NAME, "${ingredient.name}").get().await()
-            val ingredients = ingredientSh.toObjects(Ingredient::class.java)
-            if (ingredients.isEmpty()) {
-                ingredientCollection.document(ingredient.name.toString()).set(ingredient).await()
-                State.success(TRANSACTION_SUCCESS)
-            } else {
-                State.failed(context.getString(R.string.error_name_ingredient))
-            }
+            ingredientCollection.document(ingredient.name.toString()).set(ingredient).await()
+            State.success(TRANSACTION_SUCCESS)
         } catch (e: Exception) {
             State.failed(e.message.toString())
         }
@@ -79,7 +71,8 @@ class IngredientDatabase(
             map?.forEach() {
                 val ingredientRef = ingredientCollection.document(it.key!!)
                 val updateValue = it.value!!
-                ingredientRef.update(DOCUMENT_FIELD_QUANTITY, FieldValue.increment(-updateValue)).await()
+                ingredientRef.update(DOCUMENT_FIELD_QUANTITY, FieldValue.increment(-updateValue))
+                    .await()
             }
             State.success(TRANSACTION_SUCCESS)
         } catch (e: Exception) {

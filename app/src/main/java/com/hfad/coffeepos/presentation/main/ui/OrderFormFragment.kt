@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hfad.coffeepos.Constants.BUNDLE_KEY
 import com.hfad.coffeepos.R
+import com.hfad.coffeepos.ToolbarController
 import com.hfad.coffeepos.databinding.OrderFormFragmentBinding
 import com.hfad.coffeepos.presentation.main.adapter.OrderAdapter
 import com.hfad.coffeepos.presentation.main.viewmodel.MainViewModel
@@ -32,20 +34,27 @@ class OrderFormFragment : Fragment() {
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerOrder.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerOrder.adapter = orderAdapter
+
+        val mainActivity = activity as ToolbarController
+        mainActivity.setTitleToolbar("Заказ")
+
         viewModel.getDishes().observe(viewLifecycleOwner, Observer {
             orderAdapter.setData(it)
         })
         binding.buttonApply.setOnClickListener {
-//            viewModel.confirmOrder(orderAdapter.getOrder())
-            val order = orderAdapter.getOrder()
-            val bundle = Bundle()
-            bundle.putSerializable("str",order)
-            findNavController().navigate(R.id.confirmOrderFragment,bundle)
+//            val order = orderAdapter.getOrder()
+//            val bundle = Bundle()
+//            bundle.putSerializable(BUNDLE_KEY,order)
+//            findNavController().navigate(R.id.confirmOrderFragment,bundle)
+            findNavController().navigate(R.id.ingredientCardFragment)
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

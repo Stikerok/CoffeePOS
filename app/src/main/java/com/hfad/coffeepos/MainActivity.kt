@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToolbarController {
 
     private lateinit var toolbar: Toolbar
     private lateinit var auth: FirebaseAuth
@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
         auth = Firebase.auth
         val host : NavHostFragment = supportFragmentManager.
         findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
         navController = host.navController
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
@@ -43,4 +43,9 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
+
+    override fun setTitleToolbar(title: String) {
+        supportActionBar?.title = title
+    }
+
 }

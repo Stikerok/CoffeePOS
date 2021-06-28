@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_start_end">16dp</dimen>
+    <dimen name="image_size_card">150dp</dimen>
+</resources>
