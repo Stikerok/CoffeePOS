@@ -41,6 +41,7 @@ class AddIngredientFragment : Fragment() {
             fillingCard(ingredient)
             binding.addIngredientButtonApply.setOnClickListener {
                 viewModel.addIngredient(ingredient)
+                Log.d("TAG","ADDFragment: ${ingredient.name} ${ingredient.image}")
                 findNavController().popBackStack()
             }
         })

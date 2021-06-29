@@ -1,6 +1,7 @@
 package com.hfad.coffeepos.presentation.main.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,16 +42,27 @@ class IngredientsFragment : Fragment(), IngredientItemClickListener {
         binding.ingridRecycler.adapter = ingredientsAdapter
         viewModel.getIngredients().observe(viewLifecycleOwner, Observer {
             ingredientsAdapter.setData(it)
+            it.forEach { ingredient ->
+                Log.d("INGRED","LIST ${ingredient.image}")
+            }
         })
         ingredientsAdapter.setIngredientsListener(this)
         binding.addNewIngrid.setOnClickListener {
             ingredientViewModel.setIngredient(Ingredient())
-            findNavController().navigate(R.id.addIngredientFragment)
+            findNavController().navigate(R.id.action_ingridients_to_add_Ingredient_Fragment)
         }
     }
 
     override fun onClick(ingrid: Ingredient) {
-        ingredientViewModel.setIngredient(ingrid)
+        ingredientViewModel.setIngredient(
+            Ingredient(
+            ingrid.name,
+            ingrid.cost,
+            ingrid.quantity,
+            ingrid.units,
+            ingrid.image
+        )
+        )
         ingredientViewModel.editClickable = false
         findNavController().navigate(R.id.ingredientCardFragment)
     }

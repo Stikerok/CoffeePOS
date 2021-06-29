@@ -28,7 +28,7 @@ class IngredientsAdapter internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
         val info = "${item.name}: ${item.quantity} ${item.units}"
-        Log.d("TAG",info)
+        Log.d("TAG","adapter: ${item.name} ${item.image}")
         viewHolder.ingredientsInfo.text = info
         item.image?.let { viewHolder.ingredientsImage.setImageResource(it) }
         viewHolder.itemView.setOnClickListener{
@@ -49,8 +49,8 @@ class IngredientsAdapter internal constructor(
 
     override fun getItemCount() = data.size
 
-    fun setIngredientsListener(IngredientItemClickListener : IngredientItemClickListener?) {
-        listenerIngredient = IngredientItemClickListener
+    fun setIngredientsListener(ingredientItemClickListener : IngredientItemClickListener?) {
+        listenerIngredient = ingredientItemClickListener
     }
 }
 
