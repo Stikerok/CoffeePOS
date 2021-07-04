@@ -50,14 +50,15 @@ class MainActivity : AppCompatActivity(), ToolbarController {
             val manager = supportFragmentManager
             singOutDialogFragment.show(manager, "myDialog")
         }
-        if (item.itemId == R.id.button_qr) {
-            navController.navigate(R.id.scannerFragment)
-        }
         return true
     }
 
     override fun setTitleToolbar(title: String) {
         supportActionBar?.title = title
+    }
+
+    override fun setVisibilityScanner(visible: Boolean) {
+        toolbarMenu.getItem(0).isVisible = visible
     }
 
 }

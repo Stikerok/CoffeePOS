@@ -93,18 +93,5 @@ class IngredientDatabase(
         }
         return state
     }
-
-    override suspend fun getIngredients(qrCode: String): State<List<Ingredient>> {
-        return try {
-            val snapshot = ingredientCollection
-                .whereEqualTo("qrCode",qrCode)
-                .get()
-                .await()
-            val ingredient = snapshot.toObjects(Ingredient::class.java)
-            State.success(ingredient)
-        } catch (e: Exception) {
-            State.failed(e.message.toString())
-        }
-    }
 }
 
