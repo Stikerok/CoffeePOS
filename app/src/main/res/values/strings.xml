@@ -29,9 +29,21 @@
     <string name="units">Единицы измерения</string>
     <string name="button_edit">Редактировать</string>
     <string name="back">Назад</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="qr_scanner">Сканер</string>
     <string name="barcode">Штрих-код</string>
+    <string name="password">Пароль</string>
+    <string name="email">email</string>
+    <string name="title_registration">Регистрация</string>
+    <string name="title_login">Авторизация</string>
+    <string name="title_main_menu">Главное меню</string>
+    <string name="title_order">Заказ</string>
+    <string name="title_confirm_order">Подтверждение заказа</string>
+    <string name="title_list_dishes">Список блюд</string>
+    <string name="title_list_ingredients">Список ингредиентов</string>
+    <string name="title_dish">Блюдо</string>
+    <string name="title_ingredient">Игредиент</string>
+    <string name="title_choice_image">Выбор изображения</string>
 
 </resources>

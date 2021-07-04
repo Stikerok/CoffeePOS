@@ -8,38 +8,46 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        android:label="@string/title_registration"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/mainMenuFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.LoginFragment"
-        android:label="login_fragment"
+        android:label="@string/title_login"
         tools:layout="@layout/login_fragment" >
         <action
-            android:id="@+id/action_loginFragment_self2"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
+            app:popUpTo="@id/mainMenuFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.MainMenuFragment"
-        android:label="Главное меню"
+        android:label="@string/title_main_menu"
         tools:layout="@layout/main_menu_fragment" />
 
     <fragment
         android:id="@+id/orderFormFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.OrderFormFragment"
-        android:label="order_form_fragment"
+        android:label="@string/title_order"
         tools:layout="@layout/order_form_fragment" />
     <fragment
         android:id="@+id/confirmOrderFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.ConfirmOrderFragment"
-        android:label="confirm_order_fragment"
+        android:label="@string/title_confirm_order"
         tools:layout="@layout/confirm_order_fragment" />
 
     <fragment
         android:id="@+id/dishDrinks"
         android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinks"
-        android:label="dish_drinks"
+        android:label="@string/title_list_dishes"
         tools:layout="@layout/dish_drinks" >
         <action
             android:id="@+id/action_dishDrinks_to_mainMenu"
@@ -54,7 +62,7 @@
     <fragment
         android:id="@+id/ingridients"
         android:name="com.hfad.coffeepos.presentation.main.ui.IngredientsFragment"
-        android:label="ingridients"
+        android:label="@string/title_list_ingredients"
         tools:layout="@layout/ingridients" >
         <action
             android:id="@+id/action_ingridients_to_ingredientCardFragment"
@@ -70,7 +78,7 @@
     <fragment
         android:id="@+id/dishDrinksEditPage"
         android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksEditPage"
-        android:label="dish_drinks_edit_page"
+        android:label="@string/title_dish"
         tools:layout="@layout/dish_drinks_edit_page" >
         <action
             android:id="@+id/action_dishDrinksEditPage_to_dishDrinks"
@@ -79,7 +87,7 @@
     <fragment
         android:id="@+id/dishDrinksAddPage"
         android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksAddPage"
-        android:label="dish_drinks_add_page"
+        android:label="@string/title_dish"
         tools:layout="@layout/dish_drinks_add_page" >
         <action
             android:id="@+id/action_dishDrinksAddPage_to_dishDrinks"
@@ -88,7 +96,7 @@
     <fragment
         android:id="@+id/ingredientCardFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.IngredientCardFragment"
-        android:label="fragment_ingredient_card"
+        android:label="@string/title_ingredient"
         tools:layout="@layout/fragment_ingredient_card" >
         <action
             android:id="@+id/action_ingredientCardFragment_to_choiceImageFragment"
@@ -97,12 +105,12 @@
     <fragment
         android:id="@+id/choiceImageFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.ChoiceImageFragment"
-        android:label="fragment_choice_image"
+        android:label="@string/title_choice_image"
         tools:layout="@layout/fragment_choice_image"/>
     <fragment
         android:id="@+id/addIngredientFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.AddIngredientFragment"
-        android:label="fragment_add__ingredient_"
+        android:label="@string/title_ingredient"
         tools:layout="@layout/fragment_add__ingredient_">
         <action
             android:id="@+id/action_add_Ingredient_Fragment_to_choiceImageFragment"

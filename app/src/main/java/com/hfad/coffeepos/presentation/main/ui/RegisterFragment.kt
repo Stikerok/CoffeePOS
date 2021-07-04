@@ -53,7 +53,7 @@ class RegisterFragment : Fragment() {
         } else {
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    findNavController().navigate(R.id.loginFragment)
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 } else {
                     Toast.makeText(requireContext(),"Ошибка: ${it.exception}",Toast.LENGTH_LONG).show()
                 }
