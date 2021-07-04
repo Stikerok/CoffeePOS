@@ -1,7 +1,5 @@
 package com.hfad.coffeepos.presentation.main.adapter
 
-
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +26,6 @@ class IngredientsAdapter internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
         val info = "${item.name}: ${item.quantity} ${item.units}"
-        Log.d("TAG","adapter: ${item.name} ${item.image}")
         viewHolder.ingredientsInfo.text = info
         item.image?.let { viewHolder.ingredientsImage.setImageResource(it) }
         viewHolder.itemView.setOnClickListener{
