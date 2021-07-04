@@ -28,16 +28,19 @@ class OrderAdapter internal constructor(
         val item = data[position]
         viewHolder.name.text = item.name
         item.image?.let { viewHolder.image.setImageResource(it) }
+
         if (order[item] == null) {
             order[item] = 0
             viewHolder.quantity.setText(order[item].toString())
         } else {
             viewHolder.quantity.setText(order[item].toString())
         }
+
         viewHolder.plus.setOnClickListener {
             order[item] = order[item]!!.plus(1)
             viewHolder.quantity.setText(order[item].toString())
         }
+
         viewHolder.minus.setOnClickListener {
             val value = order[item]
             if (value != null) {
@@ -54,7 +57,9 @@ class OrderAdapter internal constructor(
     }
 
     fun getOrder(): HashMap<Dish, Int> {
-        return order as HashMap<Dish, Int>
+        return order.filterValues {
+            it != 0
+        } as HashMap<Dish, Int>
     }
 
 

@@ -39,18 +39,14 @@ class OrderFormFragment : Fragment() {
         binding.recyclerOrder.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerOrder.adapter = orderAdapter
 
-        val mainActivity = activity as ToolbarController
-        mainActivity.setTitleToolbar("Заказ")
-
         viewModel.getDishes().observe(viewLifecycleOwner, Observer {
             orderAdapter.setData(it)
         })
         binding.buttonApply.setOnClickListener {
-//            val order = orderAdapter.getOrder()
-//            val bundle = Bundle()
-//            bundle.putSerializable(BUNDLE_KEY,order)
-//            findNavController().navigate(R.id.confirmOrderFragment,bundle)
-            findNavController().navigate(R.id.ingredientCardFragment)
+            val order = orderAdapter.getOrder()
+            val bundle = Bundle()
+            bundle.putSerializable(BUNDLE_KEY,order)
+            findNavController().navigate(R.id.confirmOrderFragment,bundle)
         }
     }
     override fun onDestroyView() {

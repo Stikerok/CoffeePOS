@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.MainMenuFragment"
-        android:label="main_menu_fragment"
+        android:label="Главное меню"
         tools:layout="@layout/main_menu_fragment" />
 
     <fragment
@@ -103,5 +103,19 @@
         <action
             android:id="@+id/action_add_Ingredient_Fragment_to_choiceImageFragment"
             app:destination="@id/choiceImageFragment" />
+        <argument
+            android:name="qrCode"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.ScannerFragment"
+        android:label="fragment_scanner" >
+        <action
+            android:id="@+id/action_scannerFragment_to_addIngredientFragment"
+            app:destination="@id/addIngredientFragment"
+            app:popUpTo="@id/ingridients"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

@@ -13,10 +13,13 @@ import com.hfad.coffeepos.State
 import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.domain.entity.Ingredient
 import com.hfad.coffeepos.domain.usecase.DishRepository
+import com.hfad.coffeepos.extensions.background
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class DishDatabase(
@@ -31,21 +34,29 @@ class DishDatabase(
             .collection(DISHES_DB)
 
     override suspend fun addDish(dish: Dish): State<String> {
-        return try {
-            dishesCollection.document(dish.name.toString()).set(dish).await()
-            State.success(TRANSACTION_SUCCESS)
-        } catch (e: Exception) {
-            State.failed(e.message.toString())
+        var state : State<String>
+        withContext(Dispatchers.IO) {
+            state =  try {
+                dishesCollection.document(dish.name.toString()).set(dish).await()
+                State.success(TRANSACTION_SUCCESS)
+            } catch (e: Exception) {
+                State.failed(e.message.toString())
+            }
         }
+        return state
     }
 
     override suspend fun deleteDish(name: String): State<String> {
-        return try {
-            dishesCollection.document(name).delete().await()
-            State.success(TRANSACTION_SUCCESS)
-        } catch (e: Exception) {
-            State.failed(e.message.toString())
+        var state : State<String>
+        withContext(Dispatchers.IO) {
+            state = try {
+                dishesCollection.document(name).delete().await()
+                State.success(TRANSACTION_SUCCESS)
+            } catch (e: Exception) {
+                State.failed(e.message.toString())
+            }
         }
+        return state
     }
 
     @ExperimentalCoroutinesApi
