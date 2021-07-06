@@ -27,7 +27,8 @@ class ConfirmOrderAdapter internal constructor(
         viewHolder.name.text = item.name
         item.image?.let { viewHolder.image.setImageResource(it) }
         viewHolder.quantity.text = itemQuantity.toString()
-        viewHolder.cost.text = String.format("%.2f",item.cost?.times(itemQuantity))
+        val costText = "${item.cost} x $itemQuantity"
+        viewHolder.cost.text = costText
     }
 
     fun setData(data: HashMap<Dish, Int>) {
