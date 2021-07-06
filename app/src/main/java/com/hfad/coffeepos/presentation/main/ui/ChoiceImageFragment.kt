@@ -12,6 +12,7 @@ import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.FragmentChoiceImageBinding
 import com.hfad.coffeepos.presentation.main.adapter.ChoiceImageAdapter
 import com.hfad.coffeepos.presentation.main.adapter.ChoiceImageItemClickListener
+import com.hfad.coffeepos.presentation.main.viewmodel.DishViewModel
 import com.hfad.coffeepos.presentation.main.viewmodel.IngredientViewModel
 
 class ChoiceImageFragment : Fragment(), ChoiceImageItemClickListener {
@@ -20,7 +21,7 @@ class ChoiceImageFragment : Fragment(), ChoiceImageItemClickListener {
     private val binding get() = _binding !!
     private val choiceImageAdapter = ChoiceImageAdapter(listOf())
     private val ingredientViewModel: IngredientViewModel by activityViewModels()
-
+    private val dishViewModel: DishViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +46,7 @@ class ChoiceImageFragment : Fragment(), ChoiceImageItemClickListener {
 
     override fun onItemClick(image: Int) {
         ingredientViewModel.setImage(image)
+        dishViewModel.setImage(image)
         ingredientViewModel.editClickable = true
         findNavController().popBackStack()
     }

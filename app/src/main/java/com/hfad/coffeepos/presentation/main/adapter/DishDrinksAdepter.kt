@@ -25,8 +25,8 @@ class DishDrinksAdepter internal constructor(
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = data[position]
+        item.image?.let { viewHolder.dishImage.setImageResource(it) }
         viewHolder.dishName.text = item.name
-        /* viewHolder.dishImage.setImageResource(item.) */
         viewHolder.itemView.setOnClickListener{
             listenerDishDrinks?.onClick(data[position])
         }
@@ -40,8 +40,8 @@ class DishDrinksAdepter internal constructor(
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val dishImage: ImageView = view.findViewById(R.id.img_prod_item)
-        val dishName: TextView = view.findViewById(R.id.name_prod_item)
+        var dishImage: ImageView = view.findViewById(R.id.img_prod_item)
+        var dishName: TextView = view.findViewById(R.id.name_prod_item)
     }
 
     override fun getItemCount() = data.size

@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/margin_8dp"
     android:layout_marginBottom="@dimen/margin_8dp"
-    tools:context=".presentation.main.ui.IngredientCardFragment">
+    tools:context=".presentation.main.ui.AddDishFragment">
 
     <ImageView
-        android:id="@+id/img_ingredient_card"
+        android:id="@+id/img_dish_card"
         android:layout_width="@dimen/image_size_card"
         android:layout_height="@dimen/image_size_card"
         android:src="@drawable/add_image_24"
@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="img_ingredient_card,text_input_dish_cost,text_input_dish_name" />
+        app:constraint_referenced_ids="img_dish_card,text_input_dish_cost,text_input_dish_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/margin_start"
@@ -48,34 +48,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/margin_start"
         app:layout_constraintTop_toBottomOf="@id/image_barrier"
-        app:layout_constraintEnd_toEndOf="@id/img_ingredient_card">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edit_text_ingredient_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/quantity"
-            android:inputType="numberDecimal"
-            android:saveEnabled="false"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_ingredient_units"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        app:layout_constraintStart_toEndOf="@id/text_input_ingredient_quantity"
-        app:layout_constraintTop_toBottomOf="@id/image_barrier"
         app:layout_constraintEnd_toEndOf="@id/margin_end">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edit_text_ingredient_units"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dish_ingrid_add_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/units"
-            android:inputType="text" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_dish_cost"
@@ -85,11 +71,11 @@
         android:layout_marginStart="@dimen/margin_8dp"
         app:layout_constraintBottom_toTopOf="@id/image_barrier"
         app:layout_constraintEnd_toEndOf="@id/margin_end"
-        app:layout_constraintStart_toEndOf="@id/img_ingredient_card"
+        app:layout_constraintStart_toEndOf="@id/img_dish_card"
         app:layout_constraintTop_toBottomOf="@id/text_input_dish_name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edit_text_ingredient_cost"
+            android:id="@+id/text_input_add_text_dish_cost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/cost"
@@ -104,12 +90,12 @@
         android:layout_marginStart="@dimen/margin_8dp"
         app:layout_constraintBottom_toTopOf="@id/text_input_dish_cost"
         app:layout_constraintEnd_toEndOf="@id/margin_end"
-        app:layout_constraintStart_toEndOf="@id/img_ingredient_card"
+        app:layout_constraintStart_toEndOf="@id/img_dish_card"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edit_text_ingredient_name"
+            android:id="@+id/text_input_add_text_dish_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name"
@@ -117,22 +103,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_apply"
+        android:id="@+id/add_dish_button_apply"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/margin_end"
         android:text="@string/apply"
-        app:layout_constraintBottom_toTopOf="@id/button_edit"
-        android:visibility="invisible"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_edit"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/margin_end"
-        android:backgroundTint="?colorError"
-        android:text="@string/button_edit"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

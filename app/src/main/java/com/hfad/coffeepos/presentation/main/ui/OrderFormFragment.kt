@@ -50,7 +50,7 @@ class OrderFormFragment : Fragment() {
 //            val bundle = Bundle()
 //            bundle.putSerializable(BUNDLE_KEY,order)
 //            findNavController().navigate(R.id.confirmOrderFragment,bundle)
-            findNavController().navigate(R.id.ingredientCardFragment)
+            findNavController().navigate(R.id.confirmOrderFragment)
         }
     }
     override fun onDestroyView() {
