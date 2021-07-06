@@ -77,7 +77,7 @@ class MainViewModel(
         }
     }
 
-    private fun updateDishes() {
+     private fun updateDishes() {
         launch {
             dishesUseCaseImp.observeDishes().collect { state ->
                 handleResult(state) {

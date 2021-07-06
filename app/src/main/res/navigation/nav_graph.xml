@@ -53,11 +53,11 @@
             android:id="@+id/action_dishDrinks_to_mainMenu"
             app:destination="@id/mainMenuFragment" />
         <action
-            android:id="@+id/action_dishDrinks_to_dishDrinksEditPage"
-            app:destination="@id/dishDrinksEditPage" />
+            android:id="@+id/action_dishDrinks_to_dishCardFragment"
+            app:destination="@id/dishCardFragment" />
         <action
-            android:id="@+id/action_dishDrinks_to_dishDrinksAddPage"
-            app:destination="@id/dishDrinksAddPage" />
+            android:id="@+id/action_dishDrinks_to_addDishFragment"
+            app:destination="@id/addDishFragment" />
     </fragment>
     <fragment
         android:id="@+id/ingridients"
@@ -74,24 +74,6 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
-    <fragment
-        android:id="@+id/dishDrinksEditPage"
-        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksEditPage"
-        android:label="@string/title_dish"
-        tools:layout="@layout/dish_drinks_edit_page" >
-        <action
-            android:id="@+id/action_dishDrinksEditPage_to_dishDrinks"
-            app:destination="@id/dishDrinks" />
-    </fragment>
-    <fragment
-        android:id="@+id/dishDrinksAddPage"
-        android:name="com.hfad.coffeepos.presentation.main.ui.DishDrinksAddPage"
-        android:label="@string/title_dish"
-        tools:layout="@layout/dish_drinks_add_page" >
-        <action
-            android:id="@+id/action_dishDrinksAddPage_to_dishDrinks"
-            app:destination="@id/dishDrinks" />
     </fragment>
     <fragment
         android:id="@+id/ingredientCardFragment"
@@ -119,5 +101,19 @@
             android:name="qrCode"
             app:argType="string"
             android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/dishCardFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.DishCardFragment"
+        android:label="fragment_dish_card"
+        tools:layout="@layout/fragment_dish_card" />
+    <fragment
+        android:id="@+id/addDishFragment"
+        android:name="com.hfad.coffeepos.presentation.main.ui.AddDishFragment"
+        android:label="fragment_add_dish"
+        tools:layout="@layout/fragment_add_dish" >
+        <action
+            android:id="@+id/action_addDishFragment_to_dishDrinks"
+            app:destination="@id/dishDrinks" />
     </fragment>
 </navigation>
