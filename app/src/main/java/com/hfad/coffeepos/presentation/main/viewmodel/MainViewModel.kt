@@ -1,14 +1,17 @@
 package com.hfad.coffeepos.presentation.main.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hfad.coffeepos.State
 import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.domain.entity.Ingredient
 import com.hfad.coffeepos.domain.usecase.DishesUseCase
 import com.hfad.coffeepos.domain.usecase.IngredientUseCase
 import com.hfad.coffeepos.extensions.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 
 class MainViewModel(

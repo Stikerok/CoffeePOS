@@ -1,24 +1,16 @@
 package com.hfad.coffeepos.presentation.main.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.hfad.coffeepos.Constants.BUNDLE_KEY
-import com.hfad.coffeepos.Constants.CHOICE_IMAGE_BUNDLE_KEY
 import com.hfad.coffeepos.R
-import com.hfad.coffeepos.ToolbarController
 import com.hfad.coffeepos.databinding.FragmentIngredientCardBinding
 import com.hfad.coffeepos.domain.entity.Ingredient
 import com.hfad.coffeepos.presentation.main.viewmodel.IngredientViewModel
@@ -43,8 +35,7 @@ class IngredientCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainActivity = activity as ToolbarController
-        mainActivity.setTitleToolbar("Ингридиент")
+
         ingredientViewModel.editClickable = changeClickable(ingredientViewModel.editClickable)
         checkInput()
         ingredientViewModel.getIngredient().observe(viewLifecycleOwner, { ingredient ->
