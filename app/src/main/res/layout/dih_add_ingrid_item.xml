@@ -22,6 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:textStyle="bold"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/dish_add_checkbox"
         app:layout_constraintStart_toEndOf="@id/dish_add_ingrid_name_item"

@@ -9,12 +9,6 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
         startKoin(this, listOf(appModule, viewModelModel))
-    }
-
-    companion object {
-        lateinit var instance: App
-            private set
     }
 }

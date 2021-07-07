@@ -106,11 +106,13 @@ class DishCardFragment : Fragment() {
                 prodCost.isEnabled = false
                 deleteButton.visibility = INVISIBLE
                 applyButton.visibility = INVISIBLE
+                editButton.text = getString(R.string.button_edit)
             } else {
                 prodImage.isEnabled = true
                 prodCost.isEnabled = true
                 deleteButton.visibility = VISIBLE
                 applyButton.visibility = VISIBLE
+                editButton.text = getString(R.string.back)
             }
 
 

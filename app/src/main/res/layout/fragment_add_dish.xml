@@ -12,12 +12,12 @@
         android:id="@+id/img_dish_card"
         android:layout_width="@dimen/image_size_card"
         android:layout_height="@dimen/image_size_card"
-        android:src="@drawable/add_image_24"
         android:clickable="true"
         android:focusable="true"
+        android:saveEnabled="false"
+        android:src="@drawable/add_image_24"
         app:layout_constraintStart_toStartOf="@id/margin_start"
-        app:layout_constraintTop_toTopOf="parent"
-        android:saveEnabled="false"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/image_barrier"
@@ -41,26 +41,16 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/margin_start_end" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_ingredient_quantity"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dish_ingrid_add_recycler"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@id/add_dish_button_apply"
+        app:layout_constraintEnd_toEndOf="@id/margin_end"
         app:layout_constraintStart_toStartOf="@id/margin_start"
-        app:layout_constraintTop_toBottomOf="@id/image_barrier"
-        app:layout_constraintEnd_toEndOf="@id/margin_end">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/dish_ingrid_add_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toTopOf="@id/image_barrier" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -106,10 +96,9 @@
         android:id="@+id/add_dish_button_apply"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/margin_end"
         android:text="@string/apply"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/margin_end" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
