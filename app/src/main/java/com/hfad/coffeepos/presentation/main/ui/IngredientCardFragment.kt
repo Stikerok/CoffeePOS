@@ -10,6 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.hfad.coffeepos.Constants.DELETE_INGREDIENT_BUNDLE_KEY
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.databinding.FragmentIngredientCardBinding
 import com.hfad.coffeepos.domain.entity.Ingredient
@@ -38,11 +39,20 @@ class IngredientCardFragment : Fragment() {
 
         ingredientViewModel.editClickable = changeClickable(ingredientViewModel.editClickable)
         checkInput()
+
         ingredientViewModel.getIngredient().observe(viewLifecycleOwner, { ingredient ->
             ingredient?.let { it -> fillingCard(it) }
             binding.buttonApply.setOnClickListener {
                 viewModel.addIngredient(ingredient)
                 findNavController().popBackStack()
+            }
+            binding.buttonDelete.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(DELETE_INGREDIENT_BUNDLE_KEY, ingredient.name)
+                val deleteIngredientDialogFragment = DeleteIngredientDialogFragment()
+                val manager = activity?.supportFragmentManager
+                deleteIngredientDialogFragment.arguments = bundle
+                manager?.let { it1 -> deleteIngredientDialogFragment.show(it1, "MyDialog") }
             }
         })
 
@@ -55,7 +65,7 @@ class IngredientCardFragment : Fragment() {
         }
     }
 
-    private fun changeClickable(boolean: Boolean) : Boolean {
+    private fun changeClickable(boolean: Boolean): Boolean {
         binding.imgIngredientCard.isEnabled = boolean
         binding.textInputEditTextIngredientCost.isEnabled = boolean
         binding.textInputEditTextIngredientCost.setTextColor(resources.getColor(R.color.text_input))
@@ -66,6 +76,7 @@ class IngredientCardFragment : Fragment() {
         binding.textInputEditTextIngredientName.isEnabled = boolean
         binding.textInputEditTextIngredientName.setTextColor(resources.getColor(R.color.text_input))
         binding.buttonApply.isVisible = boolean
+        binding.buttonDelete.isVisible = boolean
         if (boolean) {
             binding.buttonEdit.text = getString(R.string.back)
         } else {

@@ -45,5 +45,7 @@
     <string name="title_dish">Блюдо</string>
     <string name="title_ingredient">Игредиент</string>
     <string name="title_choice_image">Выбор изображения</string>
+    <string name="title_create_dish">Создание блюда</string>
+    <string name="button_delete">Удалить</string>
 
 </resources>

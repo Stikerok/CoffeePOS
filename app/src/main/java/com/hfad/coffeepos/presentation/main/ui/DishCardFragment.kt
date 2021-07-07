@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.hfad.coffeepos.Constants
 import com.hfad.coffeepos.R
 import com.hfad.coffeepos.domain.entity.Dish
 import com.hfad.coffeepos.presentation.main.adapter.DishEditIngridAdapter
@@ -31,6 +33,7 @@ class DishCardFragment : Fragment() {
     private lateinit var prodCost: TextInputEditText
     private lateinit var editButton: MaterialButton
     private lateinit var applyButton: MaterialButton
+    private lateinit var deleteButton: MaterialButton
     private var ingridList = emptyList<Pair<String?, Double?>>()
     private lateinit var dishIngAdapter: RecyclerView
 
@@ -54,7 +57,7 @@ class DishCardFragment : Fragment() {
         prodCost = view.findViewById(R.id.text_input_add_text_dish_cost)
         editButton = view.findViewById(R.id.button_edit)
         applyButton = view.findViewById(R.id.button_apply)
-
+        deleteButton = view.findViewById(R.id.button_delete)
         dishIngAdapter = view.findViewById(R.id.dish_ingrid_recycler)
         dishIngAdapter.layoutManager = LinearLayoutManager(requireContext())
         dishIngAdapter.adapter = dishEditIngridAdapter
@@ -66,13 +69,20 @@ class DishCardFragment : Fragment() {
                 prodCost.setText(dish.cost.toString())
                 if (dish.ingredients != null) ingridList = dish.ingredients!!.toList()
                 dishEditIngridAdapter.setData(ingridList as List<Pair<String, Double>>)
-
             }
 
             prodImage.setOnClickListener {
                 findNavController().navigate(R.id.choiceImageFragment)
             }
 
+            deleteButton.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(Constants.DELETE_DISH_BUNDLE_KEY, dish.name)
+                val deleteIngredientDialogFragment = DeleteIngredientDialogFragment()
+                val manager = activity?.supportFragmentManager
+                deleteIngredientDialogFragment.arguments = bundle
+                manager?.let { it1 -> deleteIngredientDialogFragment.show(it1, "MyDialog") }
+            }
 
             applyButton.setOnClickListener {
                 if (prodCost.text?.isNotEmpty() == true) {
@@ -94,11 +104,12 @@ class DishCardFragment : Fragment() {
             if (applyButton.visibility == VISIBLE) {
                 prodImage.isEnabled = false
                 prodCost.isEnabled = false
-
+                deleteButton.visibility = INVISIBLE
                 applyButton.visibility = INVISIBLE
             } else {
                 prodImage.isEnabled = true
                 prodCost.isEnabled = true
+                deleteButton.visibility = VISIBLE
                 applyButton.visibility = VISIBLE
             }
 

@@ -20,7 +20,7 @@ class MainMenuFragment: Fragment() {
 
     override fun onStart() {
         val currentUser = auth.currentUser
-        if (currentUser == null) {
+        if (currentUser == null) { 
             findNavController().navigate(R.id.loginFragment)
         }
         super.onStart()

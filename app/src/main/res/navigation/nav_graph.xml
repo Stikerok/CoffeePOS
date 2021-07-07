@@ -105,12 +105,12 @@
     <fragment
         android:id="@+id/dishCardFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.DishCardFragment"
-        android:label="fragment_dish_card"
+        android:label="@string/title_dish"
         tools:layout="@layout/fragment_dish_card" />
     <fragment
         android:id="@+id/addDishFragment"
         android:name="com.hfad.coffeepos.presentation.main.ui.AddDishFragment"
-        android:label="fragment_add_dish"
+        android:label="@string/title_create_dish"
         tools:layout="@layout/fragment_add_dish" >
         <action
             android:id="@+id/action_addDishFragment_to_dishDrinks"

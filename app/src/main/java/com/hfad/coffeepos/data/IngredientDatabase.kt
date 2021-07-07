@@ -5,7 +5,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.zxing.qrcode.encoder.QRCode
 import com.hfad.coffeepos.Constants.DOCUMENT_FIELD_QUANTITY
 import com.hfad.coffeepos.Constants.INGREDIENTS_DB
 import com.hfad.coffeepos.Constants.TRANSACTION_SUCCESS
@@ -26,11 +25,10 @@ class IngredientDatabase(
 
     private val auth = Firebase.auth
     private val db = Firebase.firestore
-    private val ingredientCollection =
-
-        db.collection("users").document("stszMOESuSgh1Me583Mt0OVkSDY2")
-
-            .collection(INGREDIENTS_DB)
+    private val ingredientCollection = db
+        .collection("users")
+        .document("stszMOESuSgh1Me583Mt0OVkSDY2")
+        .collection(INGREDIENTS_DB)
 
     override suspend fun addIngredient(ingredient: Ingredient): State<String> {
         var state: State<String>
