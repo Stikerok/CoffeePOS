@@ -64,13 +64,7 @@ class DishDrinks : Fragment(), DishDrinksItemClickListener {
             )
         )
 
-
-
-//
-//        var objCopy = Bundle()
-//        objCopy.putSerializable("q", dish)
         findNavController().navigate(R.id.dishCardFragment)
-
 
     }
     override fun onDestroyView() {
