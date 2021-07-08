@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -33,7 +32,7 @@ class AddDishFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddDishBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -72,7 +71,7 @@ class AddDishFragment : Fragment() {
                             ingredients = ingridAddListGetMap as MutableMap<String?, Double?>
                         )
                         viewModel.addDish(newProduct)
-                        var addProdToast = Toast.makeText(
+                        val addProdToast = Toast.makeText(
                             activity?.applicationContext,
                             "Новый продукт добавлен ",
                             Toast.LENGTH_LONG
@@ -98,8 +97,8 @@ class AddDishFragment : Fragment() {
 
     }
 
-    fun toastEmptyFields(): Toast {
-        var addProdToast = Toast.makeText(
+    private fun toastEmptyFields(): Toast {
+        val addProdToast = Toast.makeText(
             activity?.applicationContext,
             "Продукт не добавлен, поля не заполнены",
             Toast.LENGTH_LONG

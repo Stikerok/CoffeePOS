@@ -57,7 +57,17 @@ class ChoiceImageFragment : Fragment(), ChoiceImageItemClickListener {
             R.drawable.add_image_24,
             R.drawable.ic_baseline_add_24,
             R.drawable.ic_baseline_remove_24,
-            R.drawable.common_full_open_on_phone
+            R.drawable.common_full_open_on_phone,
+            R.drawable.coffeecup,
+            R.drawable.coffeeb,
+            R.drawable.cake,
+            R.drawable.latte,
+            R.drawable.mint,
+            R.drawable.muffin,
+            R.drawable.icecream,
+            R.drawable.sugar,
+            R.drawable.milk
+
         )
     }
 
