@@ -103,7 +103,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_apply"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/apply"
         android:visibility="invisible"
@@ -112,7 +112,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_edit"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:backgroundTint="?colorError"
         android:text="@string/button_edit"
@@ -121,7 +121,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_delete"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:backgroundTint="?colorError"
         android:text="@string/button_delete"
